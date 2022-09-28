@@ -12,8 +12,7 @@ RUN apk update && apk upgrade && \
     coreutils busybox gcompat musl-locales \
     musl-utils musl musl-dev pv jq
 
-RUN sudo bash \
-    case ${TARGETPLATFORM} in \
+RUN case ${TARGETPLATFORM} in \
          "linux/amd64")  ARCH=amd64  ;; \
          "linux/arm64")  ARCH=arm64  ;; \
          "linux/arm/v7") ARCH=arm    ;; \
