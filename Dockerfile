@@ -17,7 +17,7 @@ RUN case ${TARGETPLATFORM} in \
          "linux/arm64")  ARCH=arm64  ;; \
          "linux/arm/v7") ARCH=arm    ;; \
     esac && \
-    wget -qO https://github.com/alist-org/alist/releases/latest/download/alist-linux-musl-${ARCH}.tar.gz alist.tar.gz && \
+    wget -q https://github.com/alist-org/alist/releases/latest/download/alist-linux-musl-${ARCH}.tar.gz -O alist.tar.gz && \
     tar -zxvf alist.tar.gz && \
     rm -f alist.tar.gz && \
     chmod -R +x ./alist
