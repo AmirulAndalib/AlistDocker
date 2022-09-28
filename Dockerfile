@@ -12,7 +12,12 @@ RUN apk update && apk upgrade && \
     coreutils busybox gcompat musl-locales \
     musl-utils musl musl-dev pv jq
 
-RUN curl -L https://github.com/alist-org/alist/releases/latest/download/alist-linux-musl-amd64.tar.gz -o alist.tar.gz && \
+RUN case ${TARGETPLATFORM} in \
+         "linux/amd64")  ARCH=amd64  ;; \
+         "linux/arm64")  ARCH=arm64  ;; \
+         "linux/arm/v7") ARCH=arm    ;; \
+    esac && \
+    curl -L https://github.com/alist-org/alist/releases/latest/download/alist-linux-musl-${ARCH}.tar.gz -o alist.tar.gz && \
     tar -zxvf alist.tar.gz && \
     rm -f alist.tar.gz && \
     chmod -R +x ./alist
