@@ -1,5 +1,7 @@
 FROM alpine:edge
 
+ARG TARGETPLATFORM BUILDPLATFORM
+
 WORKDIR /alist/
 
 RUN chmod -R 705 /alist/ && \
